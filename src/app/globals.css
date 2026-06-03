@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-med-cyan: #0891B2;
+  --color-med-cyan-dark: #0E7490;
+  --color-med-cyan-light: #22D3EE;
+  --color-med-teal: #14B8A6;
+  --color-med-bg: #0F172A;
+  --color-med-card: #1E293B;
+  --color-med-card-hover: #273449;
+  --color-med-text: #E2E8F0;
+  --color-med-muted: #94A3B8;
+  --color-med-red: #EF4444;
+  --color-med-amber: #F59E0B;
+  --color-med-green: #10B981;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body { @apply bg-med-bg text-med-text antialiased overscroll-none; font-family: var(--font-sans); -webkit-tap-highlight-color: transparent; }
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
+::-webkit-scrollbar { width: 0; height: 0; }
+
+@layer components {
+  .card { @apply bg-med-card rounded-2xl p-4 border border-white/5 active:scale-[0.98] transition-all duration-150; }
+  .chip { @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold; }
+  .chip-akut { @apply bg-med-red/15 text-med-red border border-med-red/20; }
+  .chip-subakut { @apply bg-med-amber/15 text-med-amber border border-med-amber/20; }
+  .chip-elektiv { @apply bg-med-green/15 text-med-green border border-med-green/20; }
+  .section-card { @apply bg-med-card rounded-2xl p-4 border border-white/5; }
+  .item-row { @apply flex items-center gap-3 py-2.5 border-b border-white/5 last:border-0; }
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.animate-slide-up { animation: slideUp 0.3s ease-out; }
